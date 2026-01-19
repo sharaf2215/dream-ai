@@ -44,7 +44,7 @@ try:
     url = "https://api.coingecko.com/api/v3/simple/price?ids={coin}&vs_currencies=usd"
     data = requests.get(url).json()
     price = data['{coin}']['usd']
-    print(f"💰 {coin.title()} Price: ${{price:,}}")
+    print(f"The current price of {coin} is ${{price:,}} dollars.")
 except:
     print(f"⚠️ Could not find price for {coin}")
 """
@@ -60,7 +60,7 @@ try:
     print(f"☁️ Checking weather for {city}...")
     url = "https://wttr.in/{city}?format=3"
     response = requests.get(url)
-    print(response.text.strip())
+    print(f"The weather in {{city}} is currently {{response.text.strip()}}.")
 except Exception as e:
     print(f"⚠️ Weather error: {{e}}")
 """
