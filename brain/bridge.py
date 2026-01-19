@@ -32,6 +32,18 @@ def stream_log():
             return "".join(f.readlines()[-20:])
     return "Waiting..."
 
+@app.route('/get_mode', methods=['GET'])
+def get_mode():
+    try:
+        if os.path.exists(developer.status_path):
+            with open(developer.status_path, "r", encoding="utf-8") as f:
+                mode = f.read().strip()
+                if mode:
+                    return jsonify({"mode": mode})
+        return jsonify({"mode": "💤 IDLE"})
+    except Exception:
+        return jsonify({"mode": "💤 IDLE"})
+
 @app.route('/command', methods=['POST'])
 def receive_command():
     data = request.json
