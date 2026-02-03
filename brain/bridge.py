@@ -166,6 +166,11 @@ def receive_command():
         log_message(f"[ERROR] receive_command: {e}\n{tb}")
         return jsonify({"status": "error", "error": str(e)})
 
+@app.route('/<path:path>', methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"])
+def catch_all(path):
+    log_message(f"[DEBUG] catch_all: path=/{path}, method={request.method}, user={getattr(current_user, 'id', None)}, authenticated={getattr(current_user, 'is_authenticated', False)}")
+    return f"404 Not Found: /{path}", 404
+
 if __name__ == '__main__':
     # Initialize Log
     if not os.path.exists(LOG_FILE):
