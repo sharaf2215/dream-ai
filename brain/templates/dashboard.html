@@ -2,72 +2,51 @@
 <html>
 <head>
     <title>Dream AI // Human Interface</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* MATRIX / HUMAN UI THEME */
         body { background-color: #050505; color: #00ff41; font-family: 'Courier New', monospace; padding: 20px; }
-        .box { border: 1px solid #333; background: #111; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 15px #002200; }
+        .box { border: 1px solid #333; background: #111; padding: 20px; margin-bottom: 20px; box-shadow: 0 0 15px #002200; border-radius: 10px; }
         h1 { margin-top: 0; border-bottom: 1px solid #00ff41; padding-bottom: 10px; }
-        
-        /* LOG WINDOW */
-        #log-window { 
-            height: 400px; 
-            overflow-y: scroll; 
-            white-space: pre-wrap; 
-            color: #ccc; 
-            font-size: 15px; 
-            background: #000;
-            padding: 15px;
-            border: 1px solid #333;
-            line-height: 1.5;
-        }
-
-        /* INPUT FIELD */
-        input[type="text"] {
-            width: 70%;
-            background: #222;
-            border: 1px solid #00ff41;
-            color: #fff;
-            padding: 12px;
-            font-family: inherit;
-            font-size: 16px;
-        }
-        button {
-            width: 20%;
-            background: #00ff41;
-            color: #000;
-            border: none;
-            padding: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover { background: #fff; }
-        
-        /* VOICE TOGGLE */
+        .chat-log { height: 400px; overflow-y: scroll; background: #000; padding: 15px; border-radius: 8px; border: 1px solid #333; }
+        .chat-bubble { display: flex; margin-bottom: 10px; }
+        .chat-bubble.user { justify-content: flex-end; }
+        .chat-bubble.ai { justify-content: flex-start; }
+        .bubble { max-width: 70%; padding: 10px 16px; border-radius: 18px; font-size: 15px; line-height: 1.5; }
+        .user .bubble { background: #00ff41; color: #000; border-bottom-right-radius: 4px; }
+        .ai .bubble { background: #222; color: #00ff41; border-bottom-left-radius: 4px; border: 1px solid #00ff41; }
+        .status-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; background: #00ff41; box-shadow: 0 0 8px #00ff41; }
+        .status-offline { background: #ff4141 !important; box-shadow: 0 0 8px #ff4141; }
         .voice-controls { float: right; font-size: 12px; color: #666; cursor: pointer; }
         .voice-active { color: #00ff41; font-weight: bold; }
+        .spinner-border { width: 1.5rem; height: 1.5rem; vertical-align: middle; display: none; }
     </style>
 </head>
 <body>
     <h1>
+        <span class="status-indicator" id="system-status"></span>
         🧠 DREAM AI // HUMAN
         <span id="voice-status" class="voice-controls" onclick="toggleVoice()">[ VOICE: OFF ]</span>
     </h1>
-    
+
     <div class="box">
         <h3>💬 Talk to me</h3>
-        <input type="text" id="commandInput" placeholder="Ask me something (e.g., 'Check weather in Paris')...">
-        <button onclick="sendCommand()">SEND</button>
+        <div class="input-group mb-3">
+            <input type="text" id="commandInput" class="form-control" placeholder="Ask me something (e.g., 'Check weather in Paris')...">
+            <button class="btn btn-success" onclick="sendCommand()">SEND</button>
+            <span class="spinner-border text-success ms-2" id="loadingSpinner" role="status"></span>
+        </div>
     </div>
 
     <div class="box">
         <h3>📡 Neural Stream</h3>
-        <div id="log-window">System Initialized. waiting for input...</div>
+        <div id="chat-log" class="chat-log"></div>
     </div>
 
     <script>
         let lastLog = "";
         let voiceEnabled = false;
+        let isLoading = false;
 
         // 1. Toggle Voice On/Off
         function toggleVoice() {
@@ -86,28 +65,77 @@
         // 2. The Speech Function (The Human Voice)
         function speak(text) {
             if (!voiceEnabled) return;
-            // Remove emojis and technical junk before speaking
             const cleanText = text.replace(/[\u{1F600}-\u{1F6FF}]/gu, '').replace("RESULT:", ""); 
             const utterance = new SpeechSynthesisUtterance(cleanText);
-            
-            // Select a "Human" voice (tries to find a decent English voice)
             const voices = window.speechSynthesis.getVoices();
             utterance.voice = voices.find(v => v.lang.includes('en')) || voices[0];
             utterance.rate = 1; 
             utterance.pitch = 1;
-            
             window.speechSynthesis.speak(utterance);
+        }
+
+        // 3. System Status Indicator
+        function checkStatus() {
+            fetch('/brain-log', { method: 'HEAD' })
+                .then(() => setStatus(true))
+                .catch(() => setStatus(false));
+        }
+        function setStatus(online) {
+            const el = document.getElementById('system-status');
+            if (online) {
+                el.classList.remove('status-offline');
+                el.title = 'System Online';
+            } else {
+                el.classList.add('status-offline');
+                el.title = 'System Offline';
+            }
+        }
+        setInterval(checkStatus, 3000);
+        checkStatus();
+
+        // 4. Loading Spinner
+        function setLoading(loading) {
+            isLoading = loading;
+            document.getElementById('loadingSpinner').style.display = loading ? 'inline-block' : 'none';
+        }
+
+        // 5. Chat Bubbles
+        function renderChatLog(rawLog) {
+            const chatLog = document.getElementById('chat-log');
+            chatLog.innerHTML = '';
+            const lines = rawLog.trim().split('\n');
+            lines.forEach(line => {
+                let type = 'ai', content = line;
+                if (line.startsWith('> YOU:')) {
+                    type = 'user';
+                    content = line.replace('> YOU:', '').trim();
+                } else if (line.startsWith('RESULT:')) {
+                    type = 'ai';
+                    content = line.replace('RESULT:', '').trim();
+                }
+                if (content) {
+                    const bubble = document.createElement('div');
+                    bubble.className = `chat-bubble ${type}`;
+                    bubble.innerHTML = `<div class="bubble">${content}</div>`;
+                    chatLog.appendChild(bubble);
+                }
+            });
+            chatLog.scrollTop = chatLog.scrollHeight;
         }
 
         function sendCommand() {
             const input = document.getElementById('commandInput');
             const task = input.value;
             if (!task) return;
-
+            setLoading(true);
             // Visual feedback
-            const logWindow = document.getElementById('log-window');
-            logWindow.innerText += `\n\n> YOU: ${task}`;
-            logWindow.scrollTop = logWindow.scrollHeight;
+            const chatLog = document.getElementById('chat-log');
+            // Add user bubble immediately
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-bubble user';
+            bubble.innerHTML = `<div class="bubble">${task}</div>`;
+            chatLog.appendChild(bubble);
+            chatLog.scrollTop = chatLog.scrollHeight;
 
             fetch('/command', {
                 method: 'POST',
@@ -116,8 +144,10 @@
             })
             .then(response => response.json())
             .then(data => {
-                input.value = ""; 
-            });
+                input.value = "";
+                setLoading(false);
+            })
+            .catch(() => setLoading(false));
         }
 
         // Allow "Enter" key
@@ -125,31 +155,29 @@
             if (event.key === "Enter") sendCommand();
         });
 
-        // 3. Monitor Logs for New Responses
+        // 6. Monitor Logs for New Responses
         function updateLog() {
             fetch('/brain-log')
                 .then(response => response.text())
                 .then(data => {
-                    const logWindow = document.getElementById('log-window');
-                    
                     // Only update if there is new data
-                    if (data !== logWindow.innerText) {
+                    if (data !== lastLog) {
                         // Check if the NEW line is a Result (AI Speaking)
                         const lines = data.trim().split('\n');
                         const lastLine = lines[lines.length - 1];
-                        
-                        if (lastLine.includes("RESULT:") && lastLine !== lastLog) {
+                        if (lastLine && lastLine.includes("RESULT:") && lastLine !== lastLog) {
                             lastLog = lastLine;
-                            // Speak the result!
                             speak(lastLine.split("RESULT:")[1]);
                         }
-                        
-                        logWindow.innerText = data;
-                        logWindow.scrollTop = logWindow.scrollHeight;
+                        renderChatLog(data);
+                        lastLog = data;
                     }
                 });
         }
         setInterval(updateLog, 1000);
+        updateLog();
     </script>
+    <!-- Bootstrap JS (optional, for some components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
