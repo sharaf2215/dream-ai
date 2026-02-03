@@ -1,6 +1,5 @@
 import os
 import datetime
-import subprocess
 import sys
 from flask import Flask, request, jsonify, render_template
 
@@ -12,6 +11,7 @@ LOG_FILE = os.path.join(BASE_DIR, "brain.log")
 # --- IMPORT THE NEW BRAIN ---
 sys.path.append(os.path.dirname(BASE_DIR)) # Allow importing from parent
 from brain.evolution.smart_developer import SmartDeveloper
+from brain.evolution.executor import execute_code
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR)
 developer = SmartDeveloper()
@@ -35,14 +35,15 @@ def stream_log():
 @app.route('/get_mode', methods=['GET'])
 def get_mode():
     try:
+        mode = "automatic"
         if os.path.exists(developer.status_path):
             with open(developer.status_path, "r", encoding="utf-8") as f:
-                mode = f.read().strip()
-                if mode:
-                    return jsonify({"mode": mode})
-        return jsonify({"mode": "💤 IDLE"})
+                stored = f.read().strip()
+                if stored:
+                    mode = stored
+        return jsonify({"status": "success", "mode": mode})
     except Exception:
-        return jsonify({"mode": "💤 IDLE"})
+        return jsonify({"status": "success", "mode": "automatic"})
 
 @app.route('/command', methods=['POST'])
 def receive_command():
@@ -55,12 +56,7 @@ def receive_command():
     script_path = developer.generate_solution(task)
     
     # 2. Run Code
-    try:
-        result = subprocess.run([sys.executable, script_path], capture_output=True, text=True, timeout=5)
-        output = result.stdout.strip()
-        if not output: output = "Done (No Output)"
-    except Exception as e:
-        output = f"Error: {e}"
+    output = execute_code(script_path, timeout_seconds=10, cwd=os.path.dirname(script_path))
 
     log_message(f"📤 RESULT: {output}")
     return jsonify({"status": "success", "output": output})

@@ -1,7 +1,6 @@
 import time
 import requests
 import random
-import sys
 
 # Configuration
 BRAIN_URL = "http://localhost:3000/command"

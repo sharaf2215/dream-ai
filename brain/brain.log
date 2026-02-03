@@ -409,3 +409,439 @@ MemFree:         2867836 kB
 [18:50:30] 📥 RECEIVED: Check memory usage
 [18:50:30] 📤 RESULT: MemTotal:       16060684 kB
 MemFree:         2905012 kB
+[18:50:40] 📥 RECEIVED: List files in current directory
+[18:50:40] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:50:50] 📥 RECEIVED: List files in current directory
+[18:50:50] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:51:00] 📥 RECEIVED: List files in current directory
+[18:51:00] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:51:10] 📥 RECEIVED: Say hello to the world
+[18:51:10] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:51:20] 📥 RECEIVED: List files in current directory
+[18:51:20] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:51:30] 📥 RECEIVED: List files in current directory
+[18:51:30] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:51:40] 📥 RECEIVED: List files in current directory
+[18:51:40] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:51:50] 📥 RECEIVED: Check system disk space
+[18:51:50] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.82GB
+[18:52:00] 📥 RECEIVED: Check memory usage
+[18:52:00] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2763208 kB
+[18:52:10] 📥 RECEIVED: Check memory usage
+[18:52:10] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2789340 kB
+[18:52:20] 📥 RECEIVED: Check memory usage
+[18:52:20] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2653536 kB
+[18:52:30] 📥 RECEIVED: Check system disk space
+[18:52:30] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.82GB
+[18:52:40] 📥 RECEIVED: Check system disk space
+[18:52:40] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.82GB
+[18:52:50] 📥 RECEIVED: Check system disk space
+[18:52:50] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.82GB
+[18:53:00] 📥 RECEIVED: List files in current directory
+[18:53:00] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:53:10] 📥 RECEIVED: Check system disk space
+[18:53:10] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.82GB
+[18:53:20] 📥 RECEIVED: Check system disk space
+[18:53:20] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.82GB
+[18:53:30] 📥 RECEIVED: Check memory usage
+[18:53:30] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2737308 kB
+[18:53:40] 📥 RECEIVED: List files in current directory
+[18:53:40] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:53:50] 📥 RECEIVED: Say hello to the world
+[18:53:50] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:54:00] 📥 RECEIVED: Check system disk space
+[18:54:00] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:54:10] 📥 RECEIVED: Check system disk space
+[18:54:11] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:54:21] 📥 RECEIVED: Check memory usage
+[18:54:21] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2894424 kB
+[18:54:31] 📥 RECEIVED: Check system disk space
+[18:54:31] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:54:41] 📥 RECEIVED: Check system disk space
+[18:54:41] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:54:51] 📥 RECEIVED: List files in current directory
+[18:54:51] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:55:01] 📥 RECEIVED: Say hello to the world
+[18:55:01] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:55:11] 📥 RECEIVED: Check memory usage
+[18:55:11] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2881900 kB
+[18:55:21] 📥 RECEIVED: Say hello to the world
+[18:55:21] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:55:31] 📥 RECEIVED: Check system disk space
+[18:55:31] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:55:41] 📥 RECEIVED: Check system disk space
+[18:55:41] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:55:51] 📥 RECEIVED: Say hello to the world
+[18:55:51] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:56:01] 📥 RECEIVED: Check system disk space
+[18:56:01] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:56:11] 📥 RECEIVED: Check system disk space
+[18:56:11] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:56:21] 📥 RECEIVED: Say hello to the world
+[18:56:21] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:56:31] 📥 RECEIVED: Say hello to the world
+[18:56:31] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:56:41] 📥 RECEIVED: Check memory usage
+[18:56:41] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2792612 kB
+[18:56:51] 📥 RECEIVED: Say hello to the world
+[18:56:51] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:57:01] 📥 RECEIVED: Check system disk space
+[18:57:01] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:57:11] 📥 RECEIVED: Say hello to the world
+[18:57:11] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:57:21] 📥 RECEIVED: Check system disk space
+[18:57:21] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:57:31] 📥 RECEIVED: List files in current directory
+[18:57:31] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:57:41] 📥 RECEIVED: List files in current directory
+[18:57:41] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:57:51] 📥 RECEIVED: Check memory usage
+[18:57:51] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2916184 kB
+[18:58:01] 📥 RECEIVED: List files in current directory
+[18:58:01] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:58:11] 📥 RECEIVED: Say hello to the world
+[18:58:11] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:58:21] 📥 RECEIVED: List files in current directory
+[18:58:21] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[18:58:31] 📥 RECEIVED: Say hello to the world
+[18:58:31] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[18:58:41] 📥 RECEIVED: Check memory usage
+[18:58:42] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2994052 kB
+[18:58:52] 📥 RECEIVED: Check memory usage
+[18:58:52] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         3005124 kB
+[18:59:02] 📥 RECEIVED: Check memory usage
+[18:59:02] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2925828 kB
+[18:59:12] 📥 RECEIVED: Check system disk space
+[18:59:12] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:59:22] 📥 RECEIVED: Check memory usage
+[18:59:22] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2993376 kB
+[18:59:32] 📥 RECEIVED: Check memory usage
+[18:59:32] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         3038120 kB
+[18:59:42] 📥 RECEIVED: Check system disk space
+[18:59:42] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[18:59:52] 📥 RECEIVED: Say hello to the world
+[18:59:52] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:00:02] 📥 RECEIVED: Check system disk space
+[19:00:02] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:00:12] 📥 RECEIVED: List files in current directory
+[19:00:12] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:00:22] 📥 RECEIVED: Check memory usage
+[19:00:22] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         3076320 kB
+[19:00:32] 📥 RECEIVED: Say hello to the world
+[19:00:32] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:00:42] 📥 RECEIVED: Check memory usage
+[19:00:42] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2994208 kB
+[19:00:52] 📥 RECEIVED: Check system disk space
+[19:00:52] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:01:02] 📥 RECEIVED: Check memory usage
+[19:01:02] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2994748 kB
+[19:01:12] 📥 RECEIVED: Say hello to the world
+[19:01:12] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:01:22] 📥 RECEIVED: Check system disk space
+[19:01:22] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:01:32] 📥 RECEIVED: Check memory usage
+[19:01:32] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         3105300 kB
+[19:01:42] 📥 RECEIVED: Say hello to the world
+[19:01:42] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:01:52] 📥 RECEIVED: Check system disk space
+[19:01:52] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:02:02] 📥 RECEIVED: Check system disk space
+[19:02:02] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:02:12] 📥 RECEIVED: Check memory usage
+[19:02:12] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2900200 kB
+[19:02:22] 📥 RECEIVED: Check memory usage
+[19:02:22] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2942252 kB
+[19:02:32] 📥 RECEIVED: Say hello to the world
+[19:02:32] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:02:42] 📥 RECEIVED: Check memory usage
+[19:02:42] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         3035792 kB
+[19:02:52] 📥 RECEIVED: List files in current directory
+[19:02:52] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:03:02] 📥 RECEIVED: List files in current directory
+[19:03:02] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:03:12] 📥 RECEIVED: Check memory usage
+[19:03:13] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         3054808 kB
+[19:03:23] 📥 RECEIVED: List files in current directory
+[19:03:23] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:03:33] 📥 RECEIVED: Check system disk space
+[19:03:33] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:03:43] 📥 RECEIVED: List files in current directory
+[19:03:43] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:03:53] 📥 RECEIVED: Check memory usage
+[19:03:53] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2918704 kB
+[19:04:03] 📥 RECEIVED: List files in current directory
+[19:04:03] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:04:13] 📥 RECEIVED: Check memory usage
+[19:04:13] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2950800 kB
+[19:04:23] 📥 RECEIVED: Say hello to the world
+[19:04:23] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:04:33] 📥 RECEIVED: Check memory usage
+[19:04:33] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2964208 kB
+[19:04:43] 📥 RECEIVED: Check memory usage
+[19:04:43] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2934696 kB
+[19:04:53] 📥 RECEIVED: Check system disk space
+[19:04:53] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:05:03] 📥 RECEIVED: Say hello to the world
+[19:05:03] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:05:13] 📥 RECEIVED: Say hello to the world
+[19:05:13] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:05:23] 📥 RECEIVED: List files in current directory
+[19:05:23] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:05:33] 📥 RECEIVED: Check memory usage
+[19:05:33] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         3070304 kB
+[19:05:43] 📥 RECEIVED: Check system disk space
+[19:05:43] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:05:53] 📥 RECEIVED: Check memory usage
+[19:05:53] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2790240 kB
+[19:06:03] 📥 RECEIVED: Check system disk space
+[19:06:03] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:06:13] 📥 RECEIVED: Check memory usage
+[19:06:13] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2748332 kB
+[19:06:23] 📥 RECEIVED: Say hello to the world
+[19:06:23] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:06:33] 📥 RECEIVED: Say hello to the world
+[19:06:33] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:06:43] 📥 RECEIVED: Say hello to the world
+[19:06:43] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:06:53] 📥 RECEIVED: Check system disk space
+[19:06:53] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:07:03] 📥 RECEIVED: Check memory usage
+[19:07:03] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2811904 kB
+[19:07:13] 📥 RECEIVED: Say hello to the world
+[19:07:13] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:07:23] 📥 RECEIVED: Say hello to the world
+[19:07:23] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:07:33] 📥 RECEIVED: List files in current directory
+[19:07:33] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:07:43] 📥 RECEIVED: List files in current directory
+[19:07:43] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:07:53] 📥 RECEIVED: Check system disk space
+[19:07:53] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:08:03] 📥 RECEIVED: Check system disk space
+[19:08:03] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:08:13] 📥 RECEIVED: List files in current directory
+[19:08:13] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:08:23] 📥 RECEIVED: Check memory usage
+[19:08:23] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2829444 kB
+[19:08:34] 📥 RECEIVED: List files in current directory
+[19:08:34] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:08:44] 📥 RECEIVED: List files in current directory
+[19:08:44] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:08:54] 📥 RECEIVED: List files in current directory
+[19:08:54] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:09:04] 📥 RECEIVED: Check memory usage
+[19:09:04] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2842132 kB
+[19:09:14] 📥 RECEIVED: List files in current directory
+[19:09:14] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:09:24] 📥 RECEIVED: Say hello to the world
+[19:09:24] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:09:34] 📥 RECEIVED: Check system disk space
+[19:09:34] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:09:44] 📥 RECEIVED: Check system disk space
+[19:09:44] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:09:54] 📥 RECEIVED: Say hello to the world
+[19:09:54] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:10:04] 📥 RECEIVED: Say hello to the world
+[19:10:04] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:10:14] 📥 RECEIVED: List files in current directory
+[19:10:14] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:10:24] 📥 RECEIVED: Check system disk space
+[19:10:24] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:10:34] 📥 RECEIVED: Check system disk space
+[19:10:34] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:10:44] 📥 RECEIVED: Say hello to the world
+[19:10:44] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:10:54] 📥 RECEIVED: List files in current directory
+[19:10:54] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:11:04] 📥 RECEIVED: List files in current directory
+[19:11:04] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:11:14] 📥 RECEIVED: Check system disk space
+[19:11:14] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:11:24] 📥 RECEIVED: List files in current directory
+[19:11:24] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:11:34] 📥 RECEIVED: Check system disk space
+[19:11:34] 📤 RESULT: Disk -> total: 179.73GB, used: 108.72GB, free: 61.81GB
+[19:11:44] 📥 RECEIVED: Say hello to the world
+[19:11:44] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:12:04] 📥 RECEIVED: List files in current directory
+[19:12:04] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:12:14] 📥 RECEIVED: Say hello to the world
+[19:12:14] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:12:24] 📥 RECEIVED: Check memory usage
+[19:12:24] 📤 RESULT: MemTotal:       16060684 kB
+MemFree:         2427172 kB
+[19:12:31] 📥 RECEIVED: If you want the mode always “automatic” regardless of HUD, remove the status file lookup in get_mode. Otherwise, the current behavior keeps your live HUD updates intact.
+[19:12:31] 📤 RESULT: Task: If you want the mode always “automatic” regardless of HUD, remove the status file lookup in get_mode. Otherwise, the current behavior keeps your live HUD updates intact.
+No specific handler available.
+[19:12:34] 📥 RECEIVED: Say hello to the world
+[19:12:34] 📤 RESULT: Hello! I am Dream AI. How can I assist you?
+[19:12:44] 📥 RECEIVED: List files in current directory
+[19:12:44] 📤 RESULT: .git
+.venv
+brain
+start.py
+templates
+[19:12:54] 📥 RECEIVED: Check system disk space
+[19:12:54] 📤 RESULT: Disk -> total: 179.73GB, used: 108.73GB, free: 61.81GB
+[20:07:39] 📥 RECEIVED: Calculate 2 to the power of 10
+[20:07:40] 📤 RESULT: Task: Calculate 2 to the power of 10
+No specific handler available.

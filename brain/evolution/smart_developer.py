@@ -25,6 +25,7 @@ class SmartDeveloper:
 
         # Map task keywords to script generators
         self._strategies: List[Tuple[str, Callable[[str], str]]] = [
+            ("calculate", self._script_calculate),
             ("disk space", self._script_disk_usage),
             ("list files", self._script_list_files),
             ("memory usage", self._script_memory_usage),
@@ -105,6 +106,67 @@ class SmartDeveloper:
             print("Saved to memory.")
         """).strip() + "\n"
 
+    def _normalize_calc_expression(self, task: str) -> str:
+        """Extract and normalize a math expression from a natural-language task."""
+        lowered = task.strip().lower()
+        expr = lowered
+        if "calculate" in lowered:
+            expr = lowered.split("calculate", 1)[1].strip()
+
+        # Common phrasing normalizations
+        expr = expr.replace("multiplied by", "*")
+        expr = expr.replace("times", "*")
+        expr = expr.replace("x", "*")
+        expr = expr.replace("plus", "+")
+        expr = expr.replace("minus", "-")
+        expr = expr.replace("divided by", "/")
+        expr = expr.replace("to the power of", "**")
+        expr = expr.replace("power of", "**")
+        expr = expr.replace("raised to", "**")
+        expr = expr.replace("^", "**")
+
+        # Remove words that often appear in prompts
+        expr = re.sub(r"\bplease\b", "", expr)
+        expr = re.sub(r"\bthe\b", "", expr)
+        expr = re.sub(r"\bof\b", "", expr)
+        expr = expr.replace(",", " ")
+        expr = re.sub(r"\s+", " ", expr).strip()
+        return expr
+
+    def _script_calculate(self, task: str) -> str:
+        expr = self._normalize_calc_expression(task)
+        # Keep evaluation safe: allow only digits, operators, whitespace, parentheses and dot.
+        # Also allow '**' for exponent.
+        return textwrap.dedent(f"""
+            import ast
+
+            expr = {expr!r}
+
+            def _validate(node):
+                allowed = (
+                    ast.Expression,
+                    ast.BinOp,
+                    ast.UnaryOp,
+                    ast.Add, ast.Sub, ast.Mult, ast.Div, ast.FloorDiv, ast.Mod, ast.Pow,
+                    ast.USub, ast.UAdd,
+                    ast.Constant,
+                    ast.Load,
+                    ast.Tuple,
+                )
+                if not isinstance(node, allowed):
+                    raise ValueError(f"Disallowed syntax: {{type(node).__name__}}")
+                for child in ast.iter_child_nodes(node):
+                    _validate(child)
+
+            try:
+                tree = ast.parse(expr, mode="eval")
+                _validate(tree)
+                result = eval(compile(tree, "<calc>", "eval"), {{"__builtins__": {{}}}}, {{}})
+                print(result)
+            except Exception as e:
+                print(f"Error calculating '{{expr}}': {{e}}")
+        """).strip() + "\n"
+
     def _script_fallback(self, task: str) -> str:
         return f"print('Task: {task}\\nNo specific handler available.')\n"
 
@@ -112,23 +174,32 @@ class SmartDeveloper:
         filename = self.task_to_filename(task)
         skill_file = os.path.join(self.skills_path, filename)
 
-        # 1. Check memory
-        if os.path.exists(skill_file):
-            print(f"🧠 MEMORY: I remember this task.")
-            return skill_file
+        # 1. Determine best handler (used for cache decisions)
+        builder = self._match_strategy(task)
 
-        # 2. Determine mode and update HUD
+        # 2. Check memory (but invalidate if we previously saved a fallback)
+        if os.path.exists(skill_file):
+            try:
+                with open(skill_file, "r", encoding="utf-8") as f:
+                    existing = f.read()
+                if builder is None or "No specific handler available" not in existing:
+                    print("🧠 MEMORY: I remember this task.")
+                    return skill_file
+            except Exception:
+                # If we can't read it, just regenerate
+                pass
+
+        # 3. Determine mode and update HUD
         self.update_dashboard("🧠 THINKING...")
         print(f"🔨 DEVELOPER: Generating code for: '{task}'...")
 
-        # 3. Match strategy or fallback
-        builder = self._match_strategy(task)
+        # 4. Match strategy or fallback
         if builder:
             code = builder(task)
         else:
             code = self._script_fallback(task)
 
-        # 4. Update HUD based on code type
+        # 5. Update HUD based on code type
         if "memory" in code:
             self.update_dashboard("🟣 LEARNING MODE")
         elif "shutil" in code or "os.listdir" in code or "open(" in code:
@@ -136,7 +207,7 @@ class SmartDeveloper:
         else:
             self.update_dashboard("🔴 CHAT MODE")
 
-        # 5. Save the code
+        # 6. Save the code
         with open(skill_file, "w", encoding="utf-8") as f:
             f.write(code)
 
