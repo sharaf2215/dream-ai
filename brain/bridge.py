@@ -3,6 +3,7 @@ import datetime
 import sys
 from flask import Flask, request, jsonify, render_template, redirect, url_for, flash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_restx import Api, Resource, fields
 
 # --- PATH SETUP ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -39,31 +40,80 @@ def load_user(user_id):
     return users.get(user_id)
 developer = SmartDeveloper()
 
+# --- Flask-RESTX API Setup ---
+api = Api(app, version='1.0', title='Dream AI API', description='API documentation for Dream AI', doc='/docs')
+
+# --- API Namespace ---
+ns = api.namespace('api', description='Dream AI operations')
+
+# --- API Models ---
+command_model = api.model('Command', {
+    'task': fields.String(required=True, description='Task to perform')
+})
+
+# --- API Endpoints ---
+@ns.route('/command')
+class CommandResource(Resource):
+    @api.expect(command_model)
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation Error')
+    def post(self):
+        """Send a command to Dream AI and get the result"""
+        try:
+            data = api.payload
+            task = data.get('task')
+            log_message(f"📥 RECEIVED: {task}")
+            script_path = developer.generate_solution(task)
+            output = execute_code(script_path, timeout_seconds=10, cwd=os.path.dirname(script_path))
+            log_message(f"📤 RESULT: {output}")
+            return {"status": "success", "output": output}
+        except Exception as e:
+            import traceback
+            tb = traceback.format_exc()
+            log_message(f"[ERROR] api/command: {e}\n{tb}")
+            api.abort(500, str(e))
+
 def log_message(msg):
     timestamp = datetime.datetime.now().strftime("%H:%M:%S")
     with open(LOG_FILE, "a") as f:
         f.write(f"[{timestamp}] {msg}\n")
 
+
+# --- Dashboard Route with Debug Logging ---
 @app.route('/')
 @login_required
 def dashboard():
     try:
+        log_message(f"[DEBUG] dashboard: user={getattr(current_user, 'id', None)}, authenticated={getattr(current_user, 'is_authenticated', False)}")
         return render_template('dashboard.html', user=current_user)
     except Exception as e:
         log_message(f"[ERROR] dashboard: {e}")
         return "Dashboard error.", 500
 
+# --- Default Route: Redirect to Login if Not Authenticated ---
+@app.route('/home')
+def home():
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
+    else:
+        return redirect(url_for('login'))
+
 # --- Login Route ---
+
+# --- Login Route with Debug Logging ---
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
         user = users.get(username)
+        log_message(f"[DEBUG] login attempt: username={username}, success={user is not None and password == getattr(user, 'password', None)}")
         if user and password == user.password:
             login_user(user)
+            log_message(f"[DEBUG] login success: user={username}")
             return redirect(url_for('dashboard'))
         flash('Invalid credentials', 'danger')
+        log_message(f"[DEBUG] login failed: user={username}")
     return render_template('login.html')
 
 # --- Logout Route ---
