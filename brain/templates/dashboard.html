@@ -27,6 +27,9 @@
         <span class="status-indicator" id="system-status"></span>
         🧠 DREAM AI // HUMAN
         <span id="voice-status" class="voice-controls" onclick="toggleVoice()">[ VOICE: OFF ]</span>
+        {% if user.is_authenticated %}
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-success btn-sm float-end ms-3">Logout</a>
+        {% endif %}
     </h1>
 
     <div class="box">
